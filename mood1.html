@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fun Interactive Page 🌻✨</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
+  body {
+    overflow: hidden;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(120deg, #fff3e6, #ffe6b3);
+    position:relative;
+    text-align:center;
+    transition: background 3s ease;
+  }
+
+  h1 {
+    font-size:2.5em;
+    color:#ff704d;
+    animation: floatText 3s ease-in-out infinite;
+    z-index:2;
+  }
+
+  h2 {
+    font-size:1.2em;
+    color:#ff704d;
+    margin-bottom:20px;
+    font-weight:normal;
+    z-index:2;
+  }
+
+  #message {
+    font-size:1em;
+    color:#333;
+    margin:15px 0;
+    max-width:90%;
+    z-index:2;
+    min-height:140px;
+  }
+
+  button {
+    padding:12px 25px;
+    background-color:#ffcc33;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:1em;
+    transition:0.3s;
+    z-index:2;
+  }
+  button:hover {
+    transform:scale(1.1);
+    background-color:#ffd633;
+  }
+
+  @keyframes floatText {
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+  }
+
+  /* Sunflower animation */
+  .sunflower {
+    position:absolute;
+    width:50px;
+    height:50px;
+    background: radial-gradient(circle at center, #ffdd00 40%, #ff9900 60%);
+    border-radius:50%;
+    bottom:0;
+    animation: rise 10s linear forwards;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+  }
+
+  @keyframes rise {
+    0%{transform:translateY(100vh) rotate(0deg); opacity:0;}
+    50%{opacity:1;}
+    100%{transform:translateY(-20vh) rotate(360deg); opacity:0;}
+  }
+
+  /* Sparkle animation */
+  .sparkle {
+    position:absolute;
+    width:8px;
+    height:8px;
+    background: #ffeb3b;
+    border-radius:50%;
+    box-shadow: 0 0 8px #ffeb3b;
+    animation: sparkleMove 2s linear forwards;
+  }
+
+  @keyframes sparkleMove {
+    0%{transform:translateY(0) scale(1); opacity:1;}
+    100%{transform:translateY(-150px) scale(0.5); opacity:0;}
+  }
+
+  /* Cloud animation */
+  .cloud {
+    position:absolute;
+    width:120px;
+    height:60px;
+    background: #fff;
+    border-radius:50%;
+    opacity:0.7;
+    top: 20%;
+    animation: cloudMove linear infinite;
+  }
+  .cloud::before, .cloud::after {
+    content:'';
+    position:absolute;
+    background:#fff;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+  }
+  .cloud::before { top:-30px; left:10px; }
+  .cloud::after { top:-20px; left:40px; }
+
+  @keyframes cloudMove {
+    0%{left:-150px;}
+    100%{left:110%;}
+  }
+
+  /* Pop-up images left & right */
+  .popup-img {
+    position:absolute;
+    max-width:520px;
+    max-height:520px;
+    border-radius:5px;
+    animation: riseImg 6s forwards;
+  }
+
+  @keyframes riseImg {
+    0% {transform: translateY(100vh) scale(0.5); opacity:0;}
+    50% {opacity:1;}
+    100% {transform: translateY(-20vh) scale(1); opacity:0;}
+  }
+</style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fun Interactive Page 🌻✨</title>
+<style>
+  /* … your existing CSS … */
+  .popup-img { max-width:520px; max-height:520px; border-radius:5px; animation: riseImg 6s forwards; }
+  /* rest of your CSS… */
+</style>
+
+<!-- ADD THIS MOBILE OPTIMIZATION BELOW -->
+<style>
+  /* Responsive tweaks for phones/tablets */
+  @media only screen and (max-width: 768px) {
+    h1 {
+      font-size: 1.8em; /* smaller heading */
+    }
+    h2 {
+      font-size: 1em; /* smaller subtitle */
+    }
+    #message {
+      font-size: 0.9em; /* smaller text */
+      min-height: 120px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 0.9em;
+    }
+    .popup-img {
+      max-width: 35vw; /* scale relative to screen width */
+      max-height: 35vw;
+    }
+    .sunflower {
+      width: 8vw !important;
+      height: 8vw !important;
+    }
+    .sparkle {
+      width: 1.5vw !important;
+      height: 1.5vw !important;
+    }
+    .cloud {
+      width: 25vw;
+      height: 12vw;
+    }
+  }
+</style>
+</head>
+
+</head>
+<body>
+
+<h1>Hey Khadeeja ❤🥰🌻✨</h1>
+<h2>This one is for you ❤</h2>
+<div id="message"></div>
+<button id="funBtn">Click Me!</button>
+
+<!-- Sound Effect -->
+<audio id="popSound" src="videoplayback.m4a"></audio>
+
+<script>
+const btn = document.getElementById('funBtn');
+const message = document.getElementById('message');
+const popSound = document.getElementById('popSound');
+
+// Full message in multiple lines
+const fullMessage = [
+  "I just want your mood to feel completely better, and thats why Im doing all of this.",
+  "If you ever have any problem, you can always talk to me — Im always here for you.",
+  "Please get some rest, you have a fever, and take care of your shoulder too.",
+  "Get well soon 💗🌷"
+];
+
+// Images (replace with your images in the same folder as HTML)
+const images = [
+  'pic1.jpeg', // left image
+  'pic2.jpeg'  // right image
+];
+
+// Typewriter effect with line breaks
+function typeMessage(lines){
+  message.innerHTML = "";
+  let lineIndex = 0;
+
+  function typeLine(){
+    let i = 0;
+    const line = lines[lineIndex];
+    const interval = setInterval(()=>{
+      message.innerHTML += line[i];
+      i++;
+      if(i>=line.length){
+        clearInterval(interval);
+        message.innerHTML += '<br>'; // go to next line
+        lineIndex++;
+        if(lineIndex < lines.length){
+          setTimeout(typeLine, 200); // small delay before next line
+        }
+      }
+    },40);
+  }
+
+  typeLine();
+}
+
+// Sunflower
+function createSunflower(){
+  const sunflower = document.createElement('div');
+  sunflower.classList.add('sunflower');
+  sunflower.style.left = Math.random() * 90 + 'vw';
+  sunflower.style.width = sunflower.style.height = (30 + Math.random()*40) + 'px';
+  document.body.appendChild(sunflower);
+  setTimeout(()=>sunflower.remove(),10000);
+}
+
+// Sparkle
+function createSparkle(){
+  const sparkle = document.createElement('div');
+  sparkle.classList.add('sparkle');
+  sparkle.style.left = Math.random()*90 + 'vw';
+  sparkle.style.bottom = '0';
+  sparkle.style.width = sparkle.style.height = (5 + Math.random()*10) + 'px';
+  document.body.appendChild(sparkle);
+  setTimeout(()=>sparkle.remove(),2000);
+}
+
+// Cloud
+function createCloud(){
+  const cloud = document.createElement('div');
+  cloud.classList.add('cloud');
+  cloud.style.top = (10+Math.random()*60) + 'vh';
+  cloud.style.animationDuration = (30+Math.random()*30) + 's';
+  document.body.appendChild(cloud);
+  setTimeout(()=>cloud.remove(),60000);
+}
+
+// Pop-up images (left & right)
+function createPopupImages(){
+  // Left image
+  const imgLeft = document.createElement('img');
+  imgLeft.src = images[0];
+  imgLeft.classList.add('popup-img');
+  imgLeft.style.left = '10vw';
+  document.body.appendChild(imgLeft);
+
+  // Right image
+  const imgRight = document.createElement('img');
+  imgRight.src = images[1];
+  imgRight.classList.add('popup-img');
+  imgRight.style.left = '70vw';
+  document.body.appendChild(imgRight);
+
+  // Play pop sound
+  popSound.currentTime = 0;
+  popSound.play();
+
+  setTimeout(()=>{
+    imgLeft.remove();
+    imgRight.remove();
+  },6000);
+}
+
+// Background gradient change
+function changeBackground(){
+  const colors = ['#fff3e6','#ffe6b3','#d0f0fd','#b3e6ff','#ffd6e6','#ffe6cc'];
+  document.body.style.background = `linear-gradient(120deg, ${colors[Math.floor(Math.random()*colors.length)]}, ${colors[Math.floor(Math.random()*colors.length)]})`;
+}
+
+// Button click
+btn.addEventListener('click', ()=>{
+  typeMessage(fullMessage);
+  for(let i=0;i<3;i++) createSunflower();
+  for(let i=0;i<5;i++) setTimeout(()=>createSparkle(), i*150);
+  if(Math.random()>0.5) createCloud();
+  createPopupImages();
+  changeBackground();
+});
+
+// Auto clouds
+setInterval(()=>{ if(Math.random()>0.3) createCloud(); },5000);
+
+</script>
+</body>
+</html>
