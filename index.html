@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry 🌻</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff1a8, #ffd36e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    padding: 15px;
+}
+
+/* Floating sunflowers */
+.sunflower {
+    position: absolute;
+    font-size: 26px;
+    animation: float 7s linear infinite;
+    opacity: 0.85;
+}
+
+.sunflower:nth-child(1) { left: 15%; animation-duration: 8s; }
+.sunflower:nth-child(2) { left: 50%; animation-duration: 6s; }
+.sunflower:nth-child(3) { left: 80%; animation-duration: 9s; }
+
+@keyframes float {
+    from { bottom: -60px; transform: rotate(0deg); }
+    to { bottom: 110%; transform: rotate(360deg); }
+}
+
+/* Card */
+.card {
+    background: #fff;
+    width: 100%;
+    max-width: 340px;
+    padding: 24px 20px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    animation: fadeIn 1.8s ease;
+    z-index: 1;
+}
+
+h1 {
+    margin: 10px 0;
+    font-size: 22px;
+    color: #ffb703;
+}
+
+p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #444;
+    margin: 12px 0;
+}
+
+.heart {
+    font-size: 40px;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+    h1 { font-size: 20px; }
+    p { font-size: 14px; }
+    .heart { font-size: 36px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sunflower">🌻</div>
+<div class="sunflower">🌻</div>
+<div class="sunflower">🌻</div>
+
+<div class="card">
+    <div class="heart">❤️</div>
+    <h1>I’m Really Sorry 🌻</h1>
+    <p>
+        Mujh se ghalti ho gayi 💛    
+        Please mujhe maaf kar do 🌻.
+        Ap mere liye bohot khaas ho.
+    </p>
+</div>
+
+</body>
+</html>
