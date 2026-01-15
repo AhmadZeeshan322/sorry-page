@@ -6,31 +6,7 @@
 <title>Sorry Khadeeja 🌻</title>
 
 <style>
-/* Bottom Sorry animation */
-.bottom-sorry {
-    position: fixed;
-    bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 28px;
-    color: #ff6f61;
-    font-weight: bold;
-    animation: sorryUp 3s ease forwards;
-    z-index: 2;
-}
-
-@keyframes sorryUp {
-    0% {
-        bottom: -60px;
-        opacity: 0;
-    }
-    100% {
-        bottom: 20px;
-        opacity: 1;
-    }
-}
-
-    * {
+* {
     box-sizing: border-box;
 }
 
@@ -67,8 +43,8 @@ body {
 .card {
     background: linear-gradient(135deg, #ffffff, #fff4d6);
     width: 100%;
-    max-width: 380px;   /* 🔼 box size increased */
-    padding: 32px 24px; /* 🔼 more space */
+    max-width: 380px;
+    padding: 32px 24px;
     border-radius: 22px;
     text-align: center;
     box-shadow: 0 15px 40px rgba(0,0,0,0.18);
@@ -107,6 +83,23 @@ p {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Floating Sorry text */
+.bottom-sorry {
+    position: absolute;
+    bottom: -60px;
+    font-size: 26px;
+    color: #ff6f61;
+    font-weight: bold;
+    animation: sorryFloat linear infinite;
+    opacity: 0.9;
+    z-index: 2;
+}
+
+@keyframes sorryFloat {
+    from { bottom: -60px; opacity: 0; }
+    to { bottom: 110%; opacity: 1; }
+}
+
 /* Small phones */
 @media (max-width: 360px) {
     h1 { font-size: 22px; }
@@ -118,30 +111,46 @@ p {
 
 <body>
 
+<!-- Sunflowers -->
 <div class="sunflower">🌻</div>
 <div class="sunflower">🌻</div>
 <div class="sunflower">🌻</div>
 
+<!-- Card -->
 <div class="card">
     <div class="heart">❤️</div>
     <h1>Sorry Khadeeja 🌻</h1>
     <p>
-        Mujh se ghalti ho gayi 💛   
-        Please mujhe maaf kar do 🌻.
+        Mujh se ghalti ho gayi 💛  
+        Please mujhe maaf kar do 🌻
     </p>
-    <div class="bottom-sorry">Sorry</div>
-
-<audio id="sorrySound" src="sorry.mp3"></audio>
-
 </div>
+
+<!-- Audio -->
+<audio id="sorrySound" src="sorry.m4a"></audio>
+
 <script>
+// Play audio
 window.addEventListener('load', () => {
     const audio = document.getElementById('sorrySound');
     audio.volume = 0.8;
-    audio.play().catch(() => {
-        // mobile browsers need user interaction, ignore error
-    });
+    audio.play().catch(() => {});
 });
+
+// Create floating "Sorry"
+function createSorry() {
+    const sorry = document.createElement('div');
+    sorry.className = 'bottom-sorry';
+    sorry.innerText = 'Sorry';
+    sorry.style.left = Math.random() * 80 + 10 + '%';
+    sorry.style.animationDuration = (6 + Math.random() * 4) + 's';
+    document.body.appendChild(sorry);
+
+    setTimeout(() => sorry.remove(), 10000);
+}
+
+// Keep generating Sorry text
+setInterval(createSorry, 1200);
 </script>
 
 </body>
