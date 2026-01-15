@@ -6,7 +6,31 @@
 <title>Sorry Khadeeja 🌻</title>
 
 <style>
-* {
+/* Bottom Sorry animation */
+.bottom-sorry {
+    position: fixed;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    color: #ff6f61;
+    font-weight: bold;
+    animation: sorryUp 3s ease forwards;
+    z-index: 2;
+}
+
+@keyframes sorryUp {
+    0% {
+        bottom: -60px;
+        opacity: 0;
+    }
+    100% {
+        bottom: 20px;
+        opacity: 1;
+    }
+}
+
+    * {
     box-sizing: border-box;
 }
 
@@ -105,7 +129,20 @@ p {
         Mujh se ghalti ho gayi 💛   
         Please mujhe maaf kar do 🌻.
     </p>
+    <div class="bottom-sorry">Sorry</div>
+
+<audio id="sorrySound" src="sorry.mp3"></audio>
+
 </div>
+<script>
+window.addEventListener('load', () => {
+    const audio = document.getElementById('sorrySound');
+    audio.volume = 0.8;
+    audio.play().catch(() => {
+        // mobile browsers need user interaction, ignore error
+    });
+});
+</script>
 
 </body>
 </html>
