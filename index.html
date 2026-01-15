@@ -131,11 +131,15 @@ p {
 
 <script>
 // Play audio
-window.addEventListener('load', () => {
-    const audio = document.getElementById('sorrySound');
-    audio.volume = 1.8;
-    audio.play().catch(() => {});
-});
+const audio = document.getElementById('sorrySound');
+audio.volume = 1.8;
+
+document.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play().catch(() => {});
+    }
+}, { once: true });
+);
 
 // Create floating "Sorry"
 function createSorry() {
